@@ -1,0 +1,9 @@
+Transparency=high
+CursorType=block
+Font=Lucida Console
+Columns=141
+Rows=47
+Term=xterm-256color
+Printer=HPC17023 (HP ENVY Photo 7800 series)
+ConfirmExit=no
+FontSmoothing=default
