@@ -24,7 +24,7 @@ command! Source execute ":source $MYVIMRC"
 let mapleader = " "
 set hidden
 set nofoldenable
-set relativenumber
+set number relativenumber
 inoremap jk <ESC>
 
 " fzf commands
@@ -41,28 +41,36 @@ runtime macros/matchit.vim
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+" Snippets
+"
 " Opens new line below cursor and starts console.log statement
 " Type the name of the variable you want to console log and then press 
 " Ctrl + l to finish the console.log statement.
 nnoremap cl oconsole.log(');<Left><Left>
 inoremap <C-l> ', <ESC>2<LEFT>yi'f p
-
-" Make BizMod note title
-inoremap <Leader>bnt <ESC>diwi# [BIZ-<ESC>pa](https://califabcit.atlassian.net/browse/BIZ-<ESC>pa)<CR><CR>
-
+"
 " Copies the variable under the cursor and creates a console log statement for
 " that variable on the line below.
 nnoremap clc yiwoconsole.log('<ESC>pa', <ESC>pa);<ESC>
+"
+" Starts an if statement block
+nnoremap <leader>if iif () {<Enter><Enter>}<Esc>?)<Enter>i
+"
+" Enters a block from above
+inoremap <C-e> <Esc>ji  
+"
+" Starts an if-else statment block
+nnoremap <leader>ie iif () {<Enter><Enter>} else {<Enter><Enter>}<Esc>?)<Enter>i
+"
+" BizMod React Class Component - type the class name at the top of the file,
+" escape out of normal mode, and then hit <leader>rc
+nnoremap <leader>rc ciwimport * as React from 'react';<Enter>import { inject, observer } from 'mobx-react';<Enter>import * as reactCssModules from 'react-css-modules';<Enter>import * as styles from './styles.scss';<Enter>import { Store } from 'store';<Enter><Enter>@inject('store')<Enter>@observer<Enter>@reactCssModules(styles)<Enter>export class <Esc>pa extends React.Component<{ store?: Store }> {<Enter>  render() {<Enter><Enter>  return (<Enter><Enter>);<Enter><Esc>0i}<Enter><Esc>3ki      
+"
+" Make BizMod note title
+inoremap <Leader>bnt <ESC>diwi# [BIZ-<ESC>pa](https://califabcit.atlassian.net/browse/BIZ-<ESC>pa)<CR><CR>
 
 " Yank to and put from the system clipboard more easily
 nnoremap <C-v> "+p
-
-" Wrap with if statement
-vnoremap f <S-s><S-b>iif () <ESC><LEFT>i
-
-" set list shows tab characters and shows line endings as $
-nnoremap sl :set list<CR>
-nnoremap nl :set nolist<CR>
 
 " <TAB> key behavior
 filetype plugin indent on
@@ -75,10 +83,10 @@ set softtabstop=2
 set shiftwidth=2
 
 " Add blank line above or below cursor while leaving cursor in place
-execute "set <A-j>=\ej"
-execute "set <A-k>=\ek"
-nnoremap <A-j> m`o<ESC>``
-nnoremap <A-k> m`O<ESC>``
+"execute 'set <A-j>=\ej'
+"execute 'set <A-k>=\ek'
+nnoremap <C-j> m`o<ESC>``
+nnoremap <C-k> m`O<ESC>``
 
 " Buffer navigation
 nnoremap <Leader>h :bprevious<CR>
