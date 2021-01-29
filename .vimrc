@@ -95,27 +95,10 @@ nnoremap <Leader>k :bfirst<CR>
 nnoremap <Leader>j :blast<CR>
 nnoremap <C-z> :ls<CR>:b<Space>
 
-" Ctrl P 
-nnoremap <C-p> :CtrlP :pwd<CR>
-
-" NERDTree
+" NERDTreeToggle
 nmap <F5> :NERDTreeToggle<CR>
 
-let g:NERDTreeGitStatusWithFlags = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Staged"    : "#0ee375",  
-    \ "Modified"  : "#d9bf91",  
-    \ "Renamed"   : "#51C9FC",  
-    \ "Untracked" : "#FCE77C",  
-    \ "Unmerged"  : "#FC51E6",  
-    \ "Dirty"     : "#FFBD61",  
-    \ "Clean"     : "#87939A",   
-    \ "Ignored"   : "#808080"   
-    \ }                         
-
-
+" Ignore node_modules
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " NERDCommenter
@@ -134,6 +117,7 @@ set updatetime=250
 let g:gitgutter_override_sign_column_highlight = 1
 highlight SignColumn guibg=bg
 highlight SignColumn ctermbg=bg
+
 " Jump between hunks
 nmap <Leader>gn <Plug>(GitGutterNextHunk)
 nmap <Leader>gp <Plug>(GitGutterPrevHunk)
