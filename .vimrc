@@ -1,6 +1,7 @@
 " Testing Config command
 call plug#begin()
 
+Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -28,18 +29,21 @@ set number relativenumber
 inoremap jk <ESC>
 
 " fzf commands
+nmap <Leader>f :Files<CR>
 nmap <Leader>/ :BLines!<CR>
 nmap <Leader>? :Rg!<CR>
 
 " Color/Theme
 set t_Co=256
-colorscheme codedark
+"set termguicolors
+"colorscheme codedark
+colorscheme gruvbox 
 
 runtime macros/matchit.vim
 
 " Vertical line at column 80
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+highlight ColorColumn ctermbg=235 guibg=gray15
 
 " Snippets
 "
@@ -52,6 +56,7 @@ inoremap <C-l> ', <ESC>2<LEFT>yi'f p
 " Copies the variable under the cursor and creates a console log statement for
 " that variable on the line below.
 nnoremap clc yiwoconsole.log('<ESC>pa', <ESC>pa);<ESC>
+vnoremap clc y<Esc>oconsole.log('<ESC>pa', <ESC>pa);<ESC>
 "
 " Starts an if statement block
 nnoremap <leader>if iif () {<Enter><Enter>}<Esc>?)<Enter>i
